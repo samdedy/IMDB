@@ -55,9 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 if (dataWeather !=null) {
                     //     txtKota.setText(dataWeather.getName());
                     //     txtTemperature.setText(new DecimalFormat("##.##").format(dataWeather.getMain().getTemp()-273.15));
-                    txtDeg.setText("Sun / "+String.valueOf(dataWeather.getWind().getDeg())+" degree");
-                    txtWind.setText("Wind "+String.valueOf(dataWeather.getWind().getSpeed()));
-                    txtSunset.setText("Sunset "+String.valueOf(dataWeather.getSys().getSunset()));
+                    txtDeg.setText(dataWeather.getWeather().get(0).getMain()+" / "+String.valueOf(dataWeather.getWind().getDeg())+" degree");
+                    txtWind.setText("Wind "+String.valueOf(dataWeather.getWind().getSpeed())+" m/s");
+                    java.util.Date time=new java.util.Date((long)dataWeather.getSys().getSunset()*1000);
+                    txtSunset.setText("Sunset "+String.valueOf(time));
                     String image = "http://openweathermap.org/img/wn/"+ dataWeather.getWeather().get(0).getIcon()+"@2x.png";
                     Picasso.get().load(image).into(img);
 
